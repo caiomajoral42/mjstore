@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MJSTORE – Moda masculina</title>
+<meta name="description" content="MJSTORE: moda masculina com camisetas, moletons, calças, bermudas, jaquetas e bonés. Seu estilo, sua identidade.">
+<meta name="theme-color" content="#7A1022">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1EEF6; --surface:#FFFFFF; --ink:#1D1230; --muted:#675E78; --line:#D9D2E6; --accent:#5A2FB5; --on-accent:#fff; --brand:#38196A;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#140D22; --surface:#1E1530; --ink:#EEE9F8; --muted:#A99EC0; --line:#322646; --accent:#A98BFF; --on-accent:#14092B; --brand:#2A1252}
+}
+:root[data-theme="dark"]{--bg:#140D22; --surface:#1E1530; --ink:#EEE9F8; --muted:#A99EC0; --line:#322646; --accent:#A98BFF; --on-accent:#14092B; --brand:#2A1252}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;background:var(--brand)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+h1,h2,h3{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-weight:400;margin:0;line-height:1.05;letter-spacing:.01em}
+a{color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+/* cabeçalho */
+.site-header{background:var(--brand);color:#fff}
+.top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px;max-width:1100px;margin:0 auto;padding:0 20px}
+.logo{font-family:Anton,Impact,sans-serif;font-size:2.2rem;letter-spacing:.03em;text-decoration:none;color:#fff;justify-self:center}
+.icons{display:flex;gap:6px;justify-self:end}
+.ib{background:none;border:0;color:#fff;width:44px;height:44px;display:grid;place-items:center;position:relative;border-radius:50%;text-decoration:none}
+.ib:hover{background:rgba(255,255,255,.12)}
+.ib svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.badge{position:absolute;top:2px;right:2px;font-size:.72rem;font-weight:600;min-width:18px;height:18px;border-radius:9px;background:#fff;color:var(--brand);display:grid;place-items:center;padding:0 4px}
+.menu{display:flex;justify-content:center;gap:6px 28px;flex-wrap:wrap;padding:6px 20px 20px}
+.menu a{color:#fff;text-decoration:none;font-weight:500;padding:6px 2px;border-bottom:2px solid transparent}
+.menu a:hover{border-color:#fff}
+.searchbar{background:var(--brand);padding:0 20px 18px;display:none}
+.searchbar.open{display:block}
+.searchbar input{width:100%;max-width:560px;display:block;margin:0 auto;padding:12px 16px;border-radius:6px;border:0;background:#fff;color:#1D1230}
+/* banner */
+.banner{background:radial-gradient(120% 90% at 85% 20%,#6B3FD0 0%,#38196A 45%,#220F44 100%);color:#fff;overflow:hidden}
+.banner .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:center;min-height:460px;padding-top:48px;padding-bottom:48px}
+.tag{background:#F4F1FA;color:#1D1230;display:inline-block;padding:14px 22px;font-family:Anton,Impact,sans-serif;font-size:clamp(1rem,2.4vw,1.5rem);letter-spacing:.02em}
+.code{font-family:Anton,Impact,sans-serif;font-size:clamp(3.2rem,11vw,8rem);line-height:1;margin:14px 0 8px;letter-spacing:.01em}
+.off{font-family:Anton,Impact,sans-serif;font-size:clamp(1.1rem,2.6vw,1.7rem);letter-spacing:.03em;border:2px solid rgba(255,255,255,.5);display:inline-block;padding:8px 18px;border-radius:8px}
+.word{font-family:Anton,Impact,sans-serif;font-size:clamp(2.6rem,8vw,6rem);text-align:right;line-height:1}
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:6px;padding:13px 22px;font-weight:600;text-decoration:none;display:inline-block;text-align:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wa-btn{background:#25D366;color:#0B2E18}
+/* produtos */
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:40px 0 20px}
+.bar h2{font-size:2.2rem}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;padding-bottom:56px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.swatch{aspect-ratio:4/5;display:flex;align-items:flex-end;padding:12px;color:#fff;font-size:.8rem;font-weight:500}
+.swatch span{background:rgba(0,0,0,.4);padding:2px 8px;border-radius:999px}
+.info{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.info h3{font-size:1.25rem}
+.price{font-weight:600}
+.sizes{display:flex;gap:6px}
+.sizes button{flex:1;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:4px;padding:6px 0}
+.sizes button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.info .btn{margin-top:auto;width:100%}
+.none{grid-column:1/-1;color:var(--muted);padding:24px 0}
+/* drop */
+.drop{background:#120A21;color:#F4F0FA;padding-bottom:8px}
+.ticker{background:#C6FF3D;color:#16091F;overflow:hidden;white-space:nowrap;font-family:Anton,Impact,sans-serif;letter-spacing:.08em;padding:9px 0;font-size:1rem}
+.ticker span{display:inline-block;padding-left:100%;animation:run 30s linear infinite}
+@keyframes run{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.ticker{white-space:normal;text-align:center;padding:9px 12px}.ticker span{animation:none;padding-left:0}}
+.drop .bar{padding:44px 0 22px;align-items:flex-end}
+.drop .bar h2{font-size:clamp(3rem,10vw,6rem);line-height:.95}
+.drop .sub{margin:10px 0 0;color:#B9AED0;max-width:42ch}
+.drop .chip{border:1px solid #4B3A70;color:#F4F0FA;border-radius:2px;padding:7px 14px;font-weight:500}
+.drop .chip:hover{border-color:#C6FF3D}
+.drop .chip[aria-pressed="true"]{background:#C6FF3D;color:#16091F;border-color:#C6FF3D}
+.drop .grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;padding-bottom:56px}
+.drop .card{background:#1B1230;border:1px solid #33264F;border-radius:2px}
+.drop .swatch{position:relative;overflow:hidden;align-items:flex-end;justify-content:flex-start;aspect-ratio:3/4}
+.drop .swatch span{background:rgba(0,0,0,.45);border-radius:2px;font-size:.75rem}
+.drop .swatch.lt{color:#16091F}
+.drop .swatch.lt span{background:rgba(255,255,255,.55)}
+.print{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-9deg);font-family:Anton,Impact,sans-serif;font-weight:400;font-size:6rem;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);pointer-events:none}
+.lt .print{-webkit-text-stroke-color:rgba(22,9,31,.5)}
+.pill{position:absolute;top:10px;left:10px;font-style:normal;font-family:Anton,Impact,sans-serif;font-size:.85rem;letter-spacing:.06em;background:#C6FF3D;color:#16091F;padding:3px 9px;border-radius:2px}
+.drop .info h3{font-size:1.2rem;text-transform:uppercase}
+.drop .price{font-weight:600;font-size:1.05rem}
+.drop .price s{color:#8F83A8;font-weight:400;font-size:.9rem;margin-left:6px}
+.drop .sizes button{border:1px solid #4B3A70;color:#F4F0FA;border-radius:2px;font-weight:500}
+.drop .sizes button[aria-pressed="true"]{background:#F4F0FA;color:#16091F;border-color:#F4F0FA}
+.drop .info .btn{background:#C6FF3D;color:#16091F;border-radius:2px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.drop .info .btn:hover{background:#fff}
+.drop .none{color:#B9AED0}
+.drop :focus-visible{outline-color:#C6FF3D}
+@media (max-width:720px){.print{font-size:4.6rem}}
+/* efeitos */
+:root{--hot:#FF2E88;--lime:#C6FF3D}
+.banner{position:relative;overflow:hidden;background:#2A1060 radial-gradient(rgba(255,255,255,.11) 1.6px,transparent 1.8px) 0 0/14px 14px}
+.banner::before{content:"";position:absolute;top:0;bottom:0;right:-6%;width:40%;background:var(--hot);transform:skewX(-14deg)}
+.banner .wrap{position:relative;z-index:1}
+.banner .wrap>div:first-child{position:relative}
+.word{color:#16091F;text-shadow:4px 4px 0 #fff;padding-right:8px}
+.code{display:block;border:0;background:none;padding:0;cursor:pointer;color:#fff;font-family:Anton,Impact,sans-serif;font-size:clamp(3.4rem,12vw,8.4rem);line-height:1;text-align:left;text-shadow:6px 6px 0 var(--hot);margin:14px 0 8px;animation:slam .55s cubic-bezier(.2,1.6,.4,1) both}
+.code:hover{text-shadow:6px 6px 0 var(--lime)}
+@keyframes slam{from{transform:scale(1.7) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
+.hint{display:block;margin-top:12px;font-size:.85rem;color:#D8CCF2}
+.sticker{position:absolute;bottom:4px;right:2%;width:104px;height:104px;border-radius:50%;background:var(--lime);color:#16091F;display:grid;place-items:center;text-align:center;font-family:Anton,Impact,sans-serif;font-size:1.5rem;line-height:1;transform:rotate(12deg);outline:3px dashed #16091F;outline-offset:-9px;box-shadow:4px 4px 0 #16091F;animation:wob 3s ease-in-out infinite}
+@keyframes wob{50%{transform:rotate(4deg) scale(1.07)}}
+.logo:hover{text-shadow:3px 3px 0 var(--hot)}
+.menu a:hover{background:var(--hot);color:#16091F;border-color:transparent}
+.badge.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.7)}}
+.ticker{position:relative;z-index:2;width:104%;margin:-1px 0 0 -2%;transform:rotate(-1.4deg);border-block:2px solid #16091F;font-size:1.1rem;padding:10px 0}
+.drop{overflow:hidden}
+.drop .bar h2{text-shadow:4px 4px 0 var(--hot)}
+.drop .chip:hover{border-color:var(--hot);color:var(--hot)}
+.drop .card{border:2px solid #F4F0FA;box-shadow:6px 6px 0 var(--hot);transition:transform .12s,box-shadow .12s}
+.drop .card:nth-child(3n+2){box-shadow:6px 6px 0 var(--lime)}
+.drop .card:nth-child(3n){box-shadow:6px 6px 0 #8A5CFF}
+.drop .card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--hot)}
+.drop .card:nth-child(3n+2):hover{box-shadow:9px 9px 0 var(--lime)}
+.drop .card:nth-child(3n):hover{box-shadow:9px 9px 0 #8A5CFF}
+.print{transition:transform .25s}
+.card:hover .print{transform:translate(-50%,-50%) rotate(-2deg) scale(1.1)}
+.pill{transform:rotate(-5deg);box-shadow:2px 2px 0 #16091F}
+.drop .info .btn{box-shadow:3px 3px 0 #fff;transition:transform .08s,box-shadow .08s}
+.drop .info .btn:active{transform:translate(3px,3px);box-shadow:none}
+#contato{background:var(--hot);border:0}
+#contato h2{color:#16091F;text-shadow:3px 3px 0 #fff}
+#contato p{color:#16091F;font-weight:500}
+#contato .wa-btn{box-shadow:4px 4px 0 #16091F;color:#0B2E18}
+.wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #25D366;animation:ring 2.2s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+@media (max-width:720px){.banner::before{top:auto;right:0;bottom:0;width:100%;height:150px;transform:none}.sticker{width:84px;height:84px;font-size:1.2rem}}
+@media (prefers-reduced-motion:reduce){.code,.sticker,.wa::after,.badge.bump{animation:none}.drop .card,.print{transition:none}}
+/* menos ruído, cores escuras */
+:root{--hot:#5B33C4;--lime:#7B55E0}
+.ticker,.sticker,.hint,.wa::after{display:none}
+.banner{background:#2A1060 radial-gradient(rgba(255,255,255,.11) 1.6px,transparent 1.8px) 0 0/14px 14px}
+.banner::before{background:#4A22A0}
+.word{color:#fff;text-shadow:none}
+.code:hover{text-shadow:6px 6px 0 #7B55E0}
+.logo:hover{text-shadow:none}
+.menu a:hover{background:#5B33C4;color:#fff}
+.drop .bar h2{text-shadow:none}
+.drop .chip:hover{border-color:#7B55E0;color:#F4F0FA}
+.drop .card{border-color:#3A2B5C}
+.drop .card,.drop .card:nth-child(3n+2),.drop .card:nth-child(3n){box-shadow:5px 5px 0 var(--hot)}
+.drop .card:hover,.drop .card:nth-child(3n+2):hover,.drop .card:nth-child(3n):hover{box-shadow:8px 8px 0 var(--hot)}
+.drop .info .btn{box-shadow:none}
+#contato{background:#2A1060}
+#contato h2{color:#fff;text-shadow:none}
+#contato p{color:#E4DCF5}
+#contato .wa-btn{box-shadow:none}
+/* fundo preto nos cartões */
+.drop .swatch{background:#000!important;color:#fff}
+.drop .swatch.lt{color:#fff}
+.drop .swatch.lt span{background:rgba(255,255,255,.18)}
+.lt .print{-webkit-text-stroke-color:rgba(255,255,255,.55)}
+/* fundo claro na área do carrinho */
+.drop .card{background:#E4DCF5}
+.drop .info{color:#1D1230}
+.drop .price s{color:#6B5F85}
+.drop .sizes button{border-color:#8E80B3;color:#1D1230}
+.drop .sizes button[aria-pressed="true"]{background:#1D1230;color:#fff;border-color:#1D1230}
+.drop .info .btn{background:#2A1060;color:#fff}
+.drop .info .btn:hover{background:#4A22A0}
+.drop .info :focus-visible{outline-color:#2A1060}
+/* início em vermelho */
+:root{--brand:#7A1022}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--brand:#5E0C1A}}
+:root[data-theme="dark"]{--brand:#5E0C1A}
+.banner{background:#4A0A16 radial-gradient(rgba(255,255,255,.1) 1.6px,transparent 1.8px) 0 0/14px 14px}
+.banner::before{background:#8E1428}
+.code{text-shadow:6px 6px 0 #B3182E}
+.code:hover{text-shadow:6px 6px 0 #D6283F}
+.menu a:hover{background:#B3182E;color:#fff}
+/* produtos em preto */
+.drop{background:#0A0A0A}
+.drop .sub{color:#BDBDBD}
+.drop .chip{border-color:#444}
+.drop .chip:hover{border-color:#999;color:#F4F0FA}
+.drop .card{background:#E6E6E8;border-color:#2E2E2E}
+.drop .card,.drop .card:nth-child(3n+2),.drop .card:nth-child(3n){box-shadow:5px 5px 0 #3A3A3A}
+.drop .card:hover,.drop .card:nth-child(3n+2):hover,.drop .card:nth-child(3n):hover{box-shadow:8px 8px 0 #4A4A4A}
+.drop .info{color:#111}
+.drop .price s{color:#666}
+.drop .sizes button{border-color:#999;color:#111}
+.drop .sizes button[aria-pressed="true"]{background:#111;color:#fff;border-color:#111}
+.drop .info .btn{background:#111;color:#fff}
+.drop .info .btn:hover{background:#333}
+.drop .info :focus-visible{outline-color:#111}
+.drop .none{color:#BDBDBD}
+/* verde para vermelho */
+.pill{background:#B3182E;color:#fff}
+.drop .chip[aria-pressed="true"]{background:#B3182E;color:#fff;border-color:#B3182E}
+.drop :focus-visible{outline-color:#D6283F}
+/* contato preto e vermelho */
+#contato{background:#0A0A0A;border-top:4px solid #B3182E}
+#contato h2{color:#fff}
+#contato p{color:#D0D0D0}
+#contato .wa-btn{background:#B3182E;color:#fff}
+#contato .wa-btn:hover{background:#D6283F}
+.drop .sub{max-width:60ch}
+.sec h3{font-size:1.2rem;margin:22px 0 10px}
+.tbl{overflow-x:auto;max-width:560px}
+.sec table{border-collapse:collapse;width:100%}
+.sec th,.sec td{border:1px solid var(--line);padding:10px 14px;text-align:center;color:var(--ink)}
+.sec th{background:var(--surface);font-weight:600}
+.sec details{border-bottom:1px solid var(--line);max-width:680px}
+.sec summary{cursor:pointer;padding:14px 0;font-weight:600;color:var(--ink)}
+.sec details p{margin:0 0 14px}
+.drop .lnk{margin:8px 0 0;font-size:1.1rem;font-weight:500}
+.drop .lnk a{color:#BDBDBD;text-decoration:underline}
+.drop .lnk a:hover{color:#fff}
+footer a{color:#fff}
+.co{position:fixed;inset:0;z-index:12;background:var(--bg);overflow:auto;display:none;padding:calc(16px + env(safe-area-inset-top,0px)) 0 calc(24px + env(safe-area-inset-bottom,0px))}
+.co.open{display:block}
+.co-in{max-width:1000px;margin:0 auto;padding:0 20px}
+.co-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.co-top h2{font-size:2.2rem}
+.co-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+.co h3{font-size:1.3rem;margin:0 0 12px}
+.fld{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld label{display:flex;flex-direction:column;gap:4px;font-size:.9rem;color:var(--muted)}
+.fld label.w{grid-column:1/-1}
+.fld input{padding:11px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-size:1rem}
+.co-sum{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px}
+.co-sum .line{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:.95rem}
+.co-sum .tot{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-weight:600;font-size:1.2rem}
+.co-sum .btn{width:100%;margin-top:14px;display:block}
+@media (max-width:720px){.co-grid{grid-template-columns:1fr}.fld{grid-template-columns:1fr}}
+/* seções de texto */
+.sec{border-top:1px solid var(--line);padding:48px 0}
+.sec h2{font-size:2rem;margin-bottom:14px}
+.sec p,.sec li{max-width:62ch;color:var(--muted)}
+.sec ul{padding-left:20px;margin:0}
+footer{background:var(--brand);color:#fff;padding:24px 0;font-size:.9rem}
+/* whatsapp */
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.wa svg{width:34px;height:34px;fill:#fff}
+/* carrinho */
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9;display:none}
+.shade.open{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);z-index:10;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));display:none;flex-direction:column;border-left:1px solid var(--line)}
+.drawer.open{display:flex}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dh h2{font-size:1.7rem}
+.x{background:none;border:0;color:var(--ink);font-size:1.8rem;line-height:1}
+.items{flex:1;overflow:auto}
+.row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.dot{width:44px;height:54px;border-radius:3px;flex:none}
+.row .t{flex:1;font-size:.95rem}
+.row .t small{color:var(--muted);display:block}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:4px}
+.empty{color:var(--muted);padding:24px 0}
+.coupon{display:flex;gap:8px;margin-top:12px}
+.coupon input{flex:1;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink)}
+.cmsg{font-size:.85rem;color:var(--muted);min-height:1.3em;margin:4px 0 0}
+.sum{display:flex;justify-content:space-between;color:var(--muted)}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.2rem;padding:8px 0 14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:6px;z-index:20;display:none}
+.toast.show{display:block}
+@media (max-width:720px){
+  .banner .wrap{grid-template-columns:1fr;min-height:0}
+  .word{text-align:left}
+  .top{height:72px}
+  .logo{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="inicio">
+  <div class="top">
+    <div><button class="ib" id="sbtn" aria-label="Buscar produtos" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></div>
+    <a class="logo" href="#inicio">MJSTORE</a>
+    <div class="icons">
+      <a class="ib" href="#contato" aria-label="Atendimento"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></a>
+      <button class="ib" id="cbtn" aria-label="Abrir carrinho"><svg viewBox="0 0 24 24"><path d="M5 7h14l-1 14H6z"/><path d="M9 7a3 3 0 016 0"/></svg><span class="badge" id="count">0</span></button>
+    </div>
+  </div>
+  <nav class="menu" aria-label="Menu principal">
+    <a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#contato">Contato</a><a href="#quem-somos">Quem Somos</a><a href="#trocas">Trocas e Devoluções</a><a href="#termos">Termos de Uso</a>
+  </nav>
+  <div class="searchbar" id="sbar"><input id="q" type="search" placeholder="Buscar produtos" aria-label="Buscar produtos"></div>
+</header>
+
+<main>
+<section class="banner" aria-label="Promoção de primeira compra"><div class="wrap">
+  <div>
+    <div class="tag">NA SUA PRIMEIRA COMPRA USE O CUPOM:</div>
+    <button class="code" id="copy" aria-label="Copiar cupom MJ10">MJ10</button>
+    <div class="off">E GARANTA 10% DE DESCONTO!</div>
+    <span class="hint">Toque no código para copiar</span>
+    <div class="sticker" aria-hidden="true">10%<br>OFF</div>
+  </div>
+  <div class="word" aria-hidden="true">MJSTORE</div>
+</div></section>
+
+<section id="produtos" class="drop">
+<div class="ticker" aria-hidden="true"><span>NOVA COLEÇÃO ✦ USE O CUPOM MJ10 ✦ 10% OFF NA PRIMEIRA COMPRA ✦ ATENDIMENTO PELO WHATSAPP ✦ NOVA COLEÇÃO ✦ USE O CUPOM MJ10 ✦ 10% OFF NA PRIMEIRA COMPRA ✦</span></div>
+<div class="wrap">
+  <div class="bar">
+    <div><h2>PRODUTOS</h2><p class="sub">Qualidade que você sente no tecido e no caimento. Peças selecionadas, camisetas 100% algodão, acabamento caprichado e muito estilo pra você se destacar em qualquer lugar. Entrega para todo o Brasil.</p><p class="lnk"><a href="#medidas">Guia de medidas</a></p></div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="sec" id="contato"><div class="wrap">
+  <h2>CONTATO</h2>
+  <p>Tire dúvidas sobre tamanhos, prazos e pedidos direto com a gente pelo WhatsApp: (11) 99219-6539.</p>
+  <p><a class="btn wa-btn" href="https://wa.me/5511992196539" target="_blank" rel="noopener">Chamar no WhatsApp</a></p>
+</div></section>
+
+<section class="sec" id="quem-somos"><div class="wrap">
+  <h2>QUEM SOMOS</h2>
+  <p>Na MJSTORE, acreditamos que estilo é a forma de expressar quem você é. Por isso, oferecemos moda masculina que combina versatilidade, qualidade e personalidade para acompanhar você em todos os momentos.</p>
+  <p>Encontre peças que combinam com seu estilo e vista sua melhor versão!</p>
+  <p><strong>MJSTORE — Seu estilo, sua identidade.</strong></p>
+</div></section>
+
+<section class="sec" id="medidas"><div class="wrap">
+  <h2>GUIA DE MEDIDAS</h2>
+  <p>Medidas aproximadas, em centímetros. Em dúvida entre dois tamanhos, chame a gente no WhatsApp.</p>
+  <h3>Camisetas e moletons (medida da peça)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Tamanho</th><th>Largura</th><th>Comprimento</th></tr></thead>
+    <tbody>
+      <tr><td>P</td><td>54</td><td>70</td></tr>
+      <tr><td>M</td><td>56</td><td>72</td></tr>
+      <tr><td>G</td><td>58</td><td>74</td></tr>
+      <tr><td>GG</td><td>60</td><td>76</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Calças e bermudas (medida do corpo)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Tamanho</th><th>Cintura</th><th>Quadril</th></tr></thead>
+    <tbody>
+      <tr><td>P</td><td>70 a 76</td><td>90 a 96</td></tr>
+      <tr><td>M</td><td>78 a 84</td><td>98 a 104</td></tr>
+      <tr><td>G</td><td>86 a 92</td><td>106 a 112</td></tr>
+      <tr><td>GG</td><td>94 a 100</td><td>114 a 120</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec" id="duvidas"><div class="wrap">
+  <h2>PERGUNTAS FREQUENTES</h2>
+  <details><summary>Como faço meu pedido?</summary><p>Escolha as peças e os tamanhos, adicione ao carrinho e toque em “Finalizar compra”. Preencha os dados de entrega e siga para o pagamento.</p></details>
+  <details><summary>Quais são as formas de pagamento?</summary><p>O pagamento é feito online, pelo link de pagamento, na etapa final da compra.</p></details>
+  <details><summary>Vocês entregam para todo o Brasil?</summary><p>Sim. O prazo e o valor do frete são informados no atendimento, de acordo com o seu CEP.</p></details>
+  <details><summary>Como escolho o tamanho?</summary><p>Confira o guia de medidas acima. Se ficar em dúvida, é só chamar a gente no WhatsApp que ajudamos a escolher.</p></details>
+  <details><summary>Como funciona a troca?</summary><p>Você pode pedir troca ou devolução em até 7 dias após receber o pedido. A peça deve estar sem uso, com etiqueta e na embalagem original.</p></details>
+  <details><summary>Como uso o cupom?</summary><p>Digite o cupom MJ10 no campo de cupom do carrinho e garanta 10% de desconto na sua primeira compra.</p></details>
+</div></section>
+
+<section class="sec" id="trocas"><div class="wrap">
+  <h2>TROCAS E DEVOLUÇÕES</h2>
+  <ul>
+    <li>Você pode pedir troca ou devolução em até 7 dias após receber o pedido.</li>
+    <li>A peça deve estar sem uso, com etiqueta e na embalagem original.</li>
+    <li>Para solicitar, chame a gente no WhatsApp com o número do pedido.</li>
+  </ul>
+</div></section>
+
+<section class="sec" id="termos"><div class="wrap">
+  <h2>TERMOS DE USO</h2>
+  <p>Ao comprar na MJSTORE, você confirma que as informações do pedido estão corretas. Preços, estoque e prazos podem mudar sem aviso prévio. O pedido só é confirmado após a aprovação do pagamento.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 MJSTORE · WhatsApp (11) 99219-6539 · <a href="#medidas">Guia de medidas</a> · <a href="#duvidas">Perguntas frequentes</a></div></footer>
+
+<a class="wa" href="https://wa.me/5511992196539" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.5c0 2.3.6 4.4 1.8 6.300L3 29l7.400-1.900a12.800 12.800 0 005.600 1.300c7 0 12.700-5.600 12.700-12.500S23 3 16 3zm0 22.800c-1.800 0-3.600-.5-5.100-1.400l-.4-.2-4.400 1.100 1.200-4.200-.3-.4a10 10 0 01-1.600-5.400C5.400 9.800 10.100 5.300 16 5.300s10.600 4.500 10.600 10.200S21.800 25.800 16 25.800zm5.800-7.500c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100a8.400 8.400 0 01-4.200-3.600c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.100-1.200 2.800s1.200 3.200 1.400 3.500c.2.200 2.400 3.700 5.800 5.100 2.100.9 3 1 4 .8.600-.1 1.900-.8 2.200-1.600.3-.8.300-1.400.2-1.600-.1-.1-.3-.2-.6-.4z"/></svg></a>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho" aria-hidden="true">
+  <div class="dh"><h2>SEU CARRINHO</h2><button class="x" id="close" aria-label="Fechar carrinho">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="coupon"><input id="cin" placeholder="Cupom de desconto" aria-label="Cupom de desconto"><button class="btn ghost" id="capply">Aplicar</button></div>
+  <p class="cmsg" id="cmsg" role="status"></p>
+  <div class="sum"><span>Desconto</span><span id="disc">R$ 0,00</span></div>
+  <div class="total"><span>Total</span><span id="total">R$ 0,00</span></div>
+  <button class="btn" id="checkout" style="width:100%">Finalizar compra</button>
+  <button class="btn ghost" id="clear" style="margin-top:8px">Esvaziar carrinho</button>
+</aside>
+<section class="co" id="co" aria-label="Finalizar compra">
+ <div class="co-in">
+  <div class="co-top"><h2>FINALIZAR COMPRA</h2><button class="x" id="coclose" aria-label="Voltar à loja">×</button></div>
+  <div class="co-grid">
+   <div>
+    <h3>Dados de entrega</h3>
+    <div class="fld">
+     <label class="w">Nome completo<input id="f-nome" autocomplete="name"></label>
+     <label>WhatsApp ou telefone<input id="f-tel" type="tel" autocomplete="tel"></label>
+     <label>E-mail<input id="f-email" type="email" autocomplete="email"></label>
+     <label>CEP<input id="f-cep" inputmode="numeric" autocomplete="postal-code"></label>
+     <label>Estado (UF)<input id="f-uf" maxlength="2" autocomplete="address-level1"></label>
+     <label>Cidade<input id="f-cidade" autocomplete="address-level2"></label>
+     <label>Número<input id="f-num" inputmode="numeric"></label>
+     <label class="w">Endereço (rua e bairro)<input id="f-end" autocomplete="street-address"></label>
+     <label class="w">Complemento (opcional)<input id="f-comp"></label>
+    </div>
+   </div>
+   <aside class="co-sum">
+    <h3>Resumo do pedido</h3>
+    <div id="cosum"></div>
+    <button class="btn" id="copay">Ir para o pagamento</button>
+    <button class="btn ghost" id="cocopy" style="margin-top:8px">Copiar resumo do pedido</button>
+    <p class="cmsg" id="comsg" role="status"></p>
+   </aside>
+  </div>
+ </div>
+</section>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var WHATSAPP = "5511992196539";
+var COUPON = "MJ10", RATE = 0.10;
+var PRODUCTS = [
+  {id:1,name:"Camiseta Oversized Preta",cat:"Camisetas",price:99.9,old:129.9,tag:"MAIS VENDIDO",color:"#17131F"},
+  {id:2,name:"Camiseta Boxy Estampada",cat:"Camisetas",price:109.9,tag:"NOVO",color:"#5A2FB5"},
+  {id:3,name:"Camiseta Tie Dye Roxo",cat:"Camisetas",price:119.9,color:"#8A5CFF"},
+  {id:4,name:"Camiseta Heavy Off White",cat:"Camisetas",price:99.9,color:"#E3DECF",lt:1},
+  {id:5,name:"Moletom Hoodie Oversized Preto",cat:"Moletons",price:249.9,old:299.9,tag:"-17%",color:"#17131F"},
+  {id:18,name:"Moletom Hoodie Oversized Vermelho",cat:"Moletons",price:249.9,color:"#C8102E"},
+  {id:6,name:"Moletom Crewneck Heavy Preto",cat:"Moletons",price:229.9,tag:"NOVO",color:"#17131F"},
+  {id:19,name:"Moletom Crewneck Heavy Vermelho",cat:"Moletons",price:229.9,color:"#C8102E"},
+  {id:7,name:"Calça Cargo Preta",cat:"Calças",price:229.9,tag:"MAIS VENDIDO",color:"#1B1B1F"},
+  {id:22,name:"Calça Cargo Cinza",cat:"Calças",price:229.9,color:"#6C6A75"},
+  {id:8,name:"Calça Jogador Cinza",cat:"Calças",price:179.9,color:"#6C6A75"},
+  {id:23,name:"Calça Jogador Preta",cat:"Calças",price:179.9,color:"#1B1B1F"},
+  {id:9,name:"Calça Baggy Jeans",cat:"Calças",price:269.9,tag:"NOVO",color:"#3A4C73"},
+  {id:10,name:"Bermuda Cargo Preta",cat:"Bermudas",price:149.9,color:"#17131F"},
+  {id:20,name:"Bermuda Cargo Cinza",cat:"Bermudas",price:149.9,color:"#6C6A75"},
+  {id:13,name:"Bermuda Baggy Preta",cat:"Bermudas",price:169.9,tag:"NOVO",color:"#17131F"},
+  {id:21,name:"Bermuda Baggy Cinza",cat:"Bermudas",price:169.9,color:"#6C6A75"},
+  {id:11,name:"Jaqueta Corta-vento",cat:"Jaquetas",price:299.9,old:359.9,tag:"-17%",color:"#D9391F"},
+  {id:14,name:"Boné Polo Lacoste Preto",cat:"Bonés",price:119.9,tag:"NOVO",sizes:["Único"],color:"#17131F"},
+  {id:15,name:"Boné Polo Lacoste Branco",cat:"Bonés",price:119.9,tag:"NOVO",sizes:["Único"],color:"#E3DECF",lt:1},
+  {id:16,name:"Boné Polo Lacoste Vermelho",cat:"Bonés",price:119.9,tag:"NOVO",sizes:["Único"],color:"#C8102E"},
+  {id:17,name:"Boné Polo Lacoste Azul",cat:"Bonés",price:119.9,tag:"NOVO",sizes:["Único"],color:"#1F4FA3"}
+];
+var SIZES = ["P","M","G","GG"];
+var cart = [], cat = "Todos", term = "", picked = {}, coupon = false;
+var $ = function(id){return document.getElementById(id)};
+var brl = function(n){return "R$ " + n.toFixed(2).replace(".",",")};
+var byId = function(id){return PRODUCTS.filter(function(x){return x.id===id})[0]};
+var defSize = function(p){var a=p.sizes||SIZES;return a[a.length>1?1:0]};
+var norm = function(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")};
+
+try{ cart = JSON.parse(localStorage.getItem("mj-cart")||"[]"); if(!Array.isArray(cart)) cart=[]; coupon = localStorage.getItem("mj-coupon")==="1"; }catch(e){ cart=[]; }
+function save(){ try{ localStorage.setItem("mj-cart", JSON.stringify(cart)); localStorage.setItem("mj-coupon", coupon?"1":"0"); }catch(e){} }
+
+function renderFilters(){
+  var cats = ["Todos"].concat(PRODUCTS.map(function(p){return p.cat}).filter(function(c,i,a){return a.indexOf(c)===i}));
+  $("filters").innerHTML = cats.map(function(c){
+    return '<button class="chip" data-cat="'+c+'" aria-pressed="'+(c===cat)+'">'+c+'</button>';
+  }).join("");
+}
+function renderGrid(){
+  var list = PRODUCTS.filter(function(p){return (cat==="Todos"||p.cat===cat) && norm(p.name).indexOf(norm(term))>-1});
+  $("grid").innerHTML = list.length ? list.map(function(p){
+    var s = picked[p.id]||defSize(p);
+    return '<article class="card"><div class="swatch'+(p.lt?' lt':'')+'" style="background:'+p.color+'">'+(p.tag?'<em class="pill">'+p.tag+'</em>':'')+'<b class="print" aria-hidden="true">MJ</b><span>'+p.cat+'</span></div>'+
+      '<div class="info"><h3>'+p.name+'</h3><div class="price">'+brl(p.price)+(p.old?' <s>'+brl(p.old)+'</s>':'')+'</div>'+
+      '<div class="sizes" role="group" aria-label="Tamanho">'+(p.sizes||SIZES).map(function(z){
+        return '<button data-size="'+z+'" data-id="'+p.id+'" aria-pressed="'+(z===s)+'">'+z+'</button>';}).join("")+'</div>'+
+      '<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button></div></article>';
+  }).join("") : '<p class="none">Nenhum produto encontrado. Tente outra busca ou escolha “Todos”.</p>';
+}
+function renderCart(){
+  var n=0,sub=0;
+  cart.forEach(function(i){var p=byId(i.id); if(p){n+=i.qty;sub+=p.price*i.qty}});
+  var d = coupon ? sub*RATE : 0, t = sub-d;
+  $("count").textContent = n; $("disc").textContent = "− "+brl(d); $("total").textContent = brl(t);
+  $("items").innerHTML = cart.length ? cart.map(function(i,idx){
+    var p=byId(i.id); if(!p) return "";
+    return '<div class="row"><div class="dot" style="background:'+p.color+'"></div><div class="t">'+p.name+'<small>Tamanho '+i.size+' · '+brl(p.price)+'</small></div>'+
+      '<div class="qty"><button data-dec="'+idx+'" aria-label="Diminuir">−</button>'+i.qty+'<button data-inc="'+idx+'" aria-label="Aumentar">+</button></div></div>';
+  }).join("") : '<p class="empty">Seu carrinho está vazio. Escolha um tamanho e toque em “Adicionar ao carrinho”.</p>';
+  var lines = cart.map(function(i){var p=byId(i.id); return p? i.qty+"x "+p.name+" (tam. "+i.size+")":""}).filter(Boolean);
+  var msg = "Olá! Quero finalizar este pedido na MJSTORE:\n"+lines.join("\n")+(coupon?"\nCupom "+COUPON+" (10% de desconto)":"")+"\nTotal: "+brl(t);
+  $("checkout").href = "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+  $("checkout").style.display = cart.length ? "block" : "none";
+  $("clear").style.display = cart.length ? "block" : "none";
+  $("cmsg").textContent = coupon ? "Cupom "+COUPON+" aplicado: 10% de desconto." : "";
+  save();
+}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove("show")},1800)}
+function openCart(o){$("drawer").classList.toggle("open",o);$("shade").classList.toggle("open",o);$("drawer").setAttribute("aria-hidden",!o)}
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  if(b.dataset.cat){cat=b.dataset.cat;renderFilters();renderGrid()}
+  else if(b.dataset.size){picked[b.dataset.id]=b.dataset.size;renderGrid()}
+  else if(b.dataset.add){
+    var id=+b.dataset.add, size=picked[id]||defSize(byId(id));
+    var f=cart.filter(function(i){return i.id===id&&i.size===size})[0];
+    if(f) f.qty++; else cart.push({id:id,size:size,qty:1});
+    renderCart(); burst(e.clientX,e.clientY); bump(); openCart(true);
+  }
+  else if(b.dataset.inc){cart[+b.dataset.inc].qty++;renderCart()}
+  else if(b.dataset.dec){var i=cart[+b.dataset.dec];i.qty--;if(i.qty<1)cart.splice(+b.dataset.dec,1);renderCart()}
+});
+$("cbtn").onclick=function(){openCart(true)};
+$("close").onclick=$("shade").onclick=function(){openCart(false)};
+$("clear").onclick=function(){cart=[];coupon=false;renderCart()};
+$("capply").onclick=function(){
+  var v=$("cin").value.trim().toUpperCase();
+  if(v===COUPON){coupon=true;$("cin").value="";renderCart()}
+  else{$("cmsg").textContent=v?"Cupom inválido. Confira o código e tente de novo.":"Digite o código do cupom."}
+};
+$("sbtn").onclick=function(){
+  var o=!$("sbar").classList.contains("open");
+  $("sbar").classList.toggle("open",o); $("sbtn").setAttribute("aria-expanded",o);
+  if(o) $("q").focus();
+};
+$("q").addEventListener("input",function(e){term=e.target.value;renderGrid();if(term) location.hash="#produtos"});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")openCart(false)});
+
+function bump(){var b=$("count");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump")}
+function burst(x,y){
+  if(window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  var cols=["#D6283F","#B3182E","#ffffff","#8A8A8A"];
+  for(var i=0;i<14;i++){
+    var d=document.createElement("i");
+    d.style.cssText="position:fixed;left:"+x+"px;top:"+y+"px;width:8px;height:8px;background:"+cols[i%4]+";z-index:30;pointer-events:none";
+    document.body.appendChild(d);
+    var a=Math.random()*Math.PI*2, r=40+Math.random()*60;
+    d.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:"translate("+Math.cos(a)*r+"px,"+(Math.sin(a)*r+30)+"px) rotate("+Math.round(Math.random()*360)+"deg)",opacity:0}],{duration:650,easing:"ease-out"}).onfinish=(function(el){return function(){el.remove()}})(d);
+  }
+}
+$("copy").onclick=function(){
+  $("cin").value=COUPON;
+  var ok=function(){toast("Cupom "+COUPON+" copiado")}, no=function(){toast("Use o cupom "+COUPON+" no carrinho")};
+  try{navigator.clipboard.writeText(COUPON).then(ok,no)}catch(e){no()}
+};
+var PAYMENT_LINK = ""; // cole aqui o link de pagamento
+function totals(){var s=0;cart.forEach(function(i){var p=byId(i.id);if(p)s+=p.price*i.qty});var d=coupon?s*RATE:0;return{s:s,d:d,t:s-d}}
+function coLines(){return cart.map(function(i){var p=byId(i.id);return p?{n:i.qty+"x "+p.name+" (tam. "+i.size+")",v:p.price*i.qty}:null}).filter(Boolean)}
+function renderCo(){
+  var t=totals();
+  $("cosum").innerHTML=coLines().map(function(l){return '<div class="line"><span>'+l.n+'</span><span>'+brl(l.v)+'</span></div>'}).join("")+
+   '<div class="line"><span>Subtotal</span><span>'+brl(t.s)+'</span></div>'+
+   (coupon?'<div class="line"><span>Cupom '+COUPON+'</span><span>− '+brl(t.d)+'</span></div>':'')+
+   '<div class="line tot"><span>Total</span><span>'+brl(t.t)+'</span></div>';
+}
+function openCo(){if(!cart.length) return;openCart(false);renderCo();$("comsg").textContent="";$("co").classList.add("open");$("co").scrollTop=0}
+function closeCo(){$("co").classList.remove("open")}
+var REQ=["f-nome","f-tel","f-email","f-cep","f-uf","f-cidade","f-end","f-num"];
+function missing(){for(var i=0;i<REQ.length;i++){if(!$(REQ[i]).value.trim()) return REQ[i]} return ""}
+function orderText(){
+  var t=totals(), v=function(id){return $(id).value.trim()};
+  return "Pedido MJSTORE\n"+coLines().map(function(l){return l.n+" - "+brl(l.v)}).join("\n")+(coupon?"\nCupom "+COUPON+" (10%)":"")+"\nTotal: "+brl(t.t)+"\n\nEntrega para: "+v("f-nome")+" | "+v("f-tel")+" | "+v("f-email")+"\n"+v("f-end")+", "+v("f-num")+(v("f-comp")?" - "+v("f-comp"):"")+" - "+v("f-cidade")+"/"+v("f-uf")+" - CEP "+v("f-cep");
+}
+$("checkout").onclick=openCo;
+$("coclose").onclick=closeCo;
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeCo()});
+$("copay").onclick=function(){
+  var m=missing(), msg=$("comsg");
+  if(m){msg.textContent="Preencha os campos obrigatórios para continuar.";$(m).focus();return}
+  if(!PAYMENT_LINK){msg.textContent="O pagamento online ainda está sendo configurado. Volte em breve.";return}
+  window.open(PAYMENT_LINK,"_blank","noopener");
+};
+$("cocopy").onclick=function(){
+  var m=missing(); if(m){$("comsg").textContent="Preencha os campos obrigatórios para copiar o resumo.";$(m).focus();return}
+  var ok=function(){toast("Resumo copiado")}, no=function(){toast("Não foi possível copiar")};
+  try{navigator.clipboard.writeText(orderText()).then(ok,no)}catch(e){no()}
+};
+renderFilters();renderGrid();renderCart();
+</script>
+</body>
+</html>
